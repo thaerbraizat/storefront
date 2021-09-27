@@ -1,7 +1,9 @@
 import { AppBar, Toolbar ,Grid,Button} from "@material-ui/core";
 import React from "react";
+import {connect} from 'react-redux';
 
-export default function Header() {
+function Header(props) {
+  console.log('props.countt.count',props.countt.totalVotes);
   const displayDesktop = () => {
 
     return <Toolbar>
@@ -16,10 +18,23 @@ export default function Header() {
            
       <Grid item>
         <div>
-        
-          <Button raised color="accent">
-            cart()
-          </Button>
+        {/* <FormControl fullWidth>
+  <InputLabel id="demo-simple-select-label">Cart()</InputLabel>
+  <Select
+    labelId="demo-simple-select-label"
+    id="demo-simple-select"
+    value={"Cart()"}
+    label={`Cart()`}
+    // onChange={handleChange}
+  >
+    <MenuItem value={10}>Ten</MenuItem>
+    <MenuItem value={20}>Twenty</MenuItem>
+    <MenuItem value={30}>Thirty</MenuItem>
+  </Select>
+</FormControl> */}
+           <Button style={{color:'red',fontSize:'25px'}} raised color="accent">
+         cart(   {props.countt.totalVotes} )
+          </Button> 
         </div>
       </Grid>
       </Grid>
@@ -32,3 +47,12 @@ export default function Header() {
     </header>
   );
 }
+const mapStateToProps = state => ({
+  counter: state.counter,
+  countt:state.countt
+  
+});
+const mapDispatchToProps = {  };
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(Header);
