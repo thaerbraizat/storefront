@@ -16,8 +16,12 @@ export default (state = initialState, action) => {
     switch (type) {
         case 'active':
             let candidates = state.candidates.map(candidate => {
+              
                 if (candidate.name === payload) {
                     return { name: candidate.name, active: !candidate.active  }
+                }
+                if (candidate.name !== payload) {
+                    return { name: candidate.name, active: false  }
                 }
                 return candidate;
             });
