@@ -2,6 +2,7 @@ import React from 'react'
 import { Button, CardActions, Typography, Card, CardContent } from "@material-ui/core";
 import { connect } from 'react-redux';
 import { switchActive, reset } from '../store/checkActiveCat';
+import { add } from '../store/cart';
 
 
 function Products(props) {
@@ -20,7 +21,7 @@ function Products(props) {
 
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
-                            Lizard
+                            Lizard1
                         </Typography>
                         <Typography variant="body2" color="primary">
                             Lizards are a widespread group of squamate reptiles, with over 6,000
@@ -28,7 +29,7 @@ function Products(props) {
                         </Typography>
                     </CardContent>
                     <CardActions>
-                        <Button size="small">Share</Button>
+                    <Button size="small"  onClick={()=>props.add('Lizard1')}>Add to cart</Button>
                         <Button size="small">Learn More</Button>
                     </CardActions>
                 </Card>
@@ -44,7 +45,7 @@ function Products(props) {
 
                         <CardContent>
                             <Typography gutterBottom variant="h5" component="div">
-                                Lizard
+                                Lizard2
                             </Typography>
                             <Typography variant="body2" color="primary">
                                 Lizards are a widespread group of squamate reptiles, with over 6,000
@@ -52,7 +53,7 @@ function Products(props) {
                             </Typography>
                         </CardContent>
                         <CardActions>
-                            <Button size="small">Share</Button>
+                        <Button size="small"  onClick={()=>props.add('Lizard2')}>Add to cart</Button>
                             <Button size="small">Learn More</Button>
                         </CardActions>
                     </Card></>
@@ -70,13 +71,17 @@ function Products(props) {
 
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
-                            Lizard
+                            Lizard3
                         </Typography>
                         <Typography variant="body2" color="primary">
                             Lizards are a widespread group of squamate reptiles, with over 6,000
                             species, ranging across all continents except Antarctica
                         </Typography>
                     </CardContent>
+                    <CardActions>
+                    <Button size="small"  onClick={()=>props.add('Lizard3')}>Add to cart</Button>
+                            <Button size="small">Learn More</Button>
+                        </CardActions>
                  
                 </Card>
 
@@ -91,13 +96,19 @@ function Products(props) {
 
                         <CardContent>
                             <Typography gutterBottom variant="h5" component="div">
-                                Lizard
+                                Lizard4
                             </Typography>
                             <Typography variant="body2" color="primary">
                                 Lizards are a widespread group of squamate reptiles, with over 6,000
                                 species, ranging across all continents except Antarctica
                             </Typography>
                         </CardContent>
+                        <CardActions>
+                            <Button size="small"  onClick={()=>props.add('Lizard4')}>Add to cart</Button>
+                        
+                            {console.log('wwwwwwwwwwwwwwwww',props.countt.cartArr)}
+                            <Button size="small">Learn More</Button>
+                        </CardActions>
                        
                     </Card></>
 
@@ -107,10 +118,12 @@ function Products(props) {
     )
 }
 const mapStateToProps = state => ({
-    counter: state.counter
+    counter: state.counter,
+    countt:state.countt
+    
 });
 
-const mapDispatchToProps = { switchActive, reset };
+const mapDispatchToProps = { switchActive,add, reset };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Products);
 
