@@ -1,12 +1,23 @@
 import React from 'react'
 import {connect} from 'react-redux';
+import {  useDispatch } from 'react-redux'; 
+import { getDotaData } from '../store/actions'
 // import { switchActive, reset } from '../store/checkActiveCat';
 import { deleteCart } from '../store/cart';
 
 
 
 function SimpleCart(props) {
-    console.log('props.countt.cartArr',props.countt.cartArr);
+    console.log('props.todos',props.todos);
+
+    // const state = useSelector((state)=> {
+    //     return {
+    //         todos: state.todos
+    //     }
+    // });
+
+    const dispatch = useDispatch();
+    
     return (
         <>
               <section>
@@ -20,12 +31,16 @@ function SimpleCart(props) {
             </ul>
             
         </section>
+
+        
+
         </>
     )
 }
 const mapStateToProps = state => ({
     counter: state.counter,
-    countt:state.countt
+    countt:state.countt,
+    todos: state.todos
     
 });
 

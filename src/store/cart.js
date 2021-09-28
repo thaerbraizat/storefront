@@ -17,29 +17,29 @@ let initialState = {
 // reducer
 export default (state = initialState, action) => {
     let { type, payload } = action;
-    console.log(" inside cart action", action);
+    console.log(" inside cart action=============================================", action);
     switch (type) {
         case 'ADD':
             let products = state.cartArr.map((product) => product.name);
-                  if (!products.includes(payload.name)) {
-                                
-                            console.log("state.cartArr",typeof(state.cartArr));
-                     return { cartArr: [...state.cartArr, payload],  totalVotes: state.totalVotes + 1 };
-                  
-                  }
-                  
-                  console.log("after state.cartArr",state.cartArr);
-                  return { cartArr: [...state.cartArr, payload],  totalVotes: state.totalVotes + 1  };
-            // return { totalVotes: state.totalVotes + 1 };
+            if (products.includes(payload.name)) {
+
+                console.log("state.cartArr999999999999999999999999999999", (payload));
+                return { cartArr: [...state.cartArr, payload], totalVotes: state.totalVotes + 1 };
+
+            }
+
+            console.log("after state.cartArr", state.cartArr);
+            return { cartArr: [...state.cartArr, payload], totalVotes: state.totalVotes + 1 };
+        // return { totalVotes: state.totalVotes + 1 };
         case 'RESET':
             return initialState;
 
-            case 'DELETE':
-                 let newProducts = state.cartArr.filter((product) => product !== payload);
-                console.log('newProdsssssssssssssucts',payload);
-            
-                  console.log("after state.cartArr",state.cartArr);
-                  return { cartArr:newProducts,  totalVotes: state.totalVotes + 1  };
+        case 'DELETE':
+            let newProducts = state.cartArr.filter((product) => product !== payload);
+            console.log('newProdsssssssssssssucts', payload);
+
+            console.log("after state.cartArr", state.cartArr);
+            return { cartArr: newProducts, totalVotes: state.totalVotes - 1 };
         default:
             return state;
     }
@@ -48,7 +48,7 @@ export default (state = initialState, action) => {
 export const add = (product) => {
     return {
         type: 'ADD',
-        payload:product
+        payload: product
 
     }
 }
@@ -56,7 +56,7 @@ export const add = (product) => {
 export const deleteCart = (product) => {
     return {
         type: 'DELETE',
-        payload:product
+        payload: product
     }
 }
 
