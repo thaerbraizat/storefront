@@ -3,12 +3,19 @@ import { Button, CardActions, Typography, Card, CardContent,Grid } from "@materi
 import { connect } from 'react-redux';
 import { switchActive, reset } from '../store/checkActiveCat';
 import { add } from '../store/cart';
+import {useState} from 'react';
 
 
 function Products(props) {
     console.log("'proooooooops", props.counter.candidates[0].active);
     console.log("'proooooooops", props.counter.candidates[1].active);
-    console.log("'teeeeeeeeeeeeeeeeeeeeeeeeees", props.todos[1]);
+    console.log("'teeeeeeeeeeeeeeeeeeeeeeeees", props.todos[1]);
+  
+    const [show, setshow] = useState(false);
+    const handleShowD =()=>{
+        setshow(!show);
+       
+      }
 
     return (
         <>
@@ -35,7 +42,7 @@ function Products(props) {
                                     </CardContent>
                                     <CardActions>
                                         <Button size="small" onClick={() => props.add(`${item.text}`)}>Add to cart</Button>
-                                        <Button size="small">Learn More</Button>
+                                        <Button size="small" onClick={handleShowD}>Learn More</Button>
                                     </CardActions>
                                 </Card>
                                 </Grid>
@@ -69,7 +76,7 @@ function Products(props) {
                                     </CardContent>
                                     <CardActions>
                                         <Button size="small" onClick={() => props.add(`${item.localized_name}`)}>Add to cart</Button>
-                                        <Button size="small">Learn More</Button>
+                                        <Button size="small" onClick={handleShowD}>Learn More</Button>
                                     </CardActions>
                                 </Card>
                             </div>)

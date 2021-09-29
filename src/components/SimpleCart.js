@@ -16,7 +16,7 @@ function SimpleCart(props) {
     //     }
     // });
 
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
     
     return (
         <>
