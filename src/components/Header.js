@@ -1,9 +1,19 @@
 import { AppBar, Toolbar ,Grid,Button} from "@material-ui/core";
 import React from "react";
 import {connect} from 'react-redux';
-
+import { useHistory } from "react-router-dom";
 function Header(props) {
   console.log('props.countt.count',props.countt.totalVotes);
+  const history = useHistory();
+
+      const cartHandler =()=>{
+        history.push("/cart");
+        console.log('hihihi');
+      }
+      const homeHandler =()=>{
+        history.push("/");
+        console.log('hihihi');
+      }
   const displayDesktop = () => {
 
     return <Toolbar>
@@ -18,21 +28,11 @@ function Header(props) {
            
       <Grid item>
         <div>
-        {/* <FormControl fullWidth>
-  <InputLabel id="demo-simple-select-label">Cart()</InputLabel>
-  <Select
-    labelId="demo-simple-select-label"
-    id="demo-simple-select"
-    value={"Cart()"}
-    label={`Cart()`}
-    // onChange={handleChange}
-  >
-    <MenuItem value={10}>Ten</MenuItem>
-    <MenuItem value={20}>Twenty</MenuItem>
-    <MenuItem value={30}>Thirty</MenuItem>
-  </Select>
-</FormControl> */}
-           <Button style={{color:'red',fontSize:'25px'}} raised color="accent">
+        <Button onClick={homeHandler} style={{color:'red',fontSize:'25px'}} raised color="accent" >
+        home
+          </Button> 
+  
+           <Button onClick={cartHandler} style={{color:'red',fontSize:'25px'}} raised color="accent" >
          cart(   {props.countt.totalVotes} )
           </Button> 
         </div>

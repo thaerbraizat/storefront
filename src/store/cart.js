@@ -12,7 +12,8 @@
 // any data type
 let initialState = {
     totalVotes: 0,
-    cartArr: []
+    cartArr: [],
+    beta:''
 }
 // reducer
 export default (state = initialState, action) => {
@@ -20,16 +21,28 @@ export default (state = initialState, action) => {
     console.log(" inside cart action=============================================", action);
     switch (type) {
         case 'ADD':
+            debugger
             let products = state.cartArr.map((product) => product.name);
             if (products.includes(payload.name)) {
-
                 console.log("state.cartArr999999999999999999999999999999", (payload));
                 return { cartArr: [...state.cartArr, payload], totalVotes: state.totalVotes + 1 };
-
+            
             }
-
             console.log("after state.cartArr", state.cartArr);
             return { cartArr: [...state.cartArr, payload], totalVotes: state.totalVotes + 1 };
+        // return { totalVotes: state.totalVotes + 1 };
+        case 'take':
+             
+
+                console.log("state.cartArr999999999999999999999999999999", (payload));
+               
+                return   {beta:state.beta =payload};
+
+            
+       
+
+            // console.log("after state.cartArr", state.cartArr);
+            // return { cartArr: [...state.cartArr, payload], totalVotes: state.totalVotes + 1 };
         // return { totalVotes: state.totalVotes + 1 };
         case 'RESET':
             return initialState;
@@ -52,7 +65,13 @@ export const add = (product) => {
 
     }
 }
+export const getProd = (product) => {
+    return {
+        type: 'take',
+        payload: product
 
+    }
+}
 export const deleteCart = (product) => {
     return {
         type: 'DELETE',
